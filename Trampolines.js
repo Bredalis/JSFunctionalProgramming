@@ -8,16 +8,16 @@ const trampolin = fn => (...args) => {
 	while (typeof resultado == "function") {
 		resultado = resultado();
 	}
-
+	
 	return resultado;
 }
 
 const operacionSuma = (numero, suma = 0) => {
-	if (numero === 0) {
-		return suma;
-	} else {
-		return () => operacionSuma(numero - 1, suma + numero);
-	}		 
+	if (numero !== 0) {
+		return () => operacionSuma(numero - 1, suma + numero);	
+	}
+
+	return suma;		 
 } 
 
 const trampolinSuma = trampolin(operacionSuma);
