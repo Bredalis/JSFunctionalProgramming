@@ -1,29 +1,24 @@
 
-// Funcion de suma total
-const suma = (lista) => {
-	let acumulado = 0;
-	let i;
-
-	for (i = 0; i < lista.length; i++) {
-		acumulado += lista[i];
-
-	}
-
-	return acumulado;
+// Función para calcular la suma total de los elementos de una lista
+const sumaTotal = (lista) => {
+	return lista.reduce((acumulado, numero) => acumulado + numero, 0);
 }
 
+// Datos de entrada
 const numeros = [1, 2, 3, 4, 5];
 const mascotas = [
-	{nombre: "Laura", edad: 12, tipo: "Perro"},
-	{nombre: "Fernando", edad: 3, tipo: "Perro"},
-	{nombre: "Lupita", edad: 10, tipo: "Perro"},
-	{nombre: "Javier", edad: 12, tipo: "Gato"}
+	{ nombre: "Laura", edad: 12, tipo: "Perro" },
+	{ nombre: "Fernando", edad: 3, tipo: "Perro" },
+	{ nombre: "Lupita", edad: 10, tipo: "Perro" },
+	{ nombre: "Javier", edad: 12, tipo: "Gato" }
 ];
 
-console.log("Suma total:", suma(numeros));
-console.log("Multiplicacion con map:", numeros.map(x => x * 2));
-console.log("Parejas:", numeros.map(x => [x, x]));
+// Resultados
+console.log(`Suma total:, ${sumaTotal(numeros)}`);
+console.log("Multiplicación por 2:", numeros.map(numero => numero * 2));
+console.log("Parejas de números:", numeros.map(numero => [numero, numero]));
 
-// Sacar el promedio de las edades de mascotas
-const edades = mascotas.map(x => x.edad);
-console.log("Promedio de las edades:", suma(edades) / edades.length);
+// Calcular el promedio de las edades de las mascotas
+const edades = mascotas.map(mascota => mascota.edad);
+const promedioEdades = sumaTotal(edades) / edades.length; 
+console.log(`Promedio de las edades de mascotas: ${promedioEdades}`);
